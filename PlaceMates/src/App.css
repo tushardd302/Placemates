@@ -416,7 +416,7 @@ form .btn:hover {
   border-radius: 10px;
 }
 
-/* pace students */
+/* place students */
 .gridContainerStudent{
   border: 2px solid var(--first);
   height: 320px;
@@ -427,11 +427,20 @@ form .btn:hover {
   padding-left: 10px;
   background-color: var(--second);
   border-radius: 10px;
+  position: relative;
 }
 .gridContainerStudent:hover{
   top: -20px;
 }
 
+#delete{
+  background-color: #FE3C4A;
+  border: #FE3C4A;
+  color: #F7F7F7;
+  border-radius: 3px;
+  margin-left: 800px;
+ position: absolute;
+}
 #names{
   display: inline-block;
 }

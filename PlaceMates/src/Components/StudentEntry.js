@@ -25,29 +25,8 @@ console.log(data);
     const handlClick=async e=>{
         e.preventDefault()
         try{
-            // const newdata = {
-            //     FirstName:data.FirstName,
-            //     LastName:data.LastName,
-            //     Designation:data.Designation,
-            //     id:data.id,
-            //     college_name:data.college_name,
-            //     branch:data.branch,
-            //     email:data.email,
-            //     password:data.password,
-            // }
-    
-            // console.log(newdata);
-    
-             await axios.post("http://localhost:8700/ll",data);
-             alert("data storedd");
-            // .then((result)=>{
-            //     if(result.data.Status === 'Invalid'){
-            //         alert('Invalid User')
-            //     }
-            //     else{
-            //         history('/signup');
-            //     }
-            // }); 
+            await axios.post("http://localhost:8700/ll",data);
+            alert("Student Added Successfully");
         }catch(err){
             console.log(err);
         }

@@ -8,9 +8,9 @@ import { useEffect } from 'react'
 
 
 export default function PlacedStudents() {
-
+    const role = localStorage.getItem("designation");
     const [dataa,setData]  = useState([])
-
+       
         useEffect(() =>{
             const fetchAllStudents = async () => {
                 try{
@@ -21,22 +21,27 @@ export default function PlacedStudents() {
                     console.log(err)
                 }
             }
-            // axios.get("http://localhost:8700/co/").then(res => {
-            //     setColumns(Object.keys(res.data[0]))
-            //     setRecords[res.data]
-            // })
 
             fetchAllStudents()
         }, [])
 
-    
+    const handleDelete=async(email)=>{
+        try{
+            alert(email)
+            const res = await axios.delete("http://localhost:8700/deleteS/",{ data: { email } })
+            alert("success")
+
+        }catch(e){
+            console.log(e)
+        }
+    }
     return (
         <>
             <Navbar></Navbar>
             <div className='box'>
             {dataa.map((data1)=>(
                 <div class="gridContainerStudent">
-                
+                   { role==="Institutional User"&& <button id='delete' onClick={() => handleDelete(data1.Email)}>Delete</button>}
                     <div class="row gridRow">
                         <div class="col gridCol  my-2">
                             <h5 id='names'>{data1.FirstName} &nbsp;</h5>

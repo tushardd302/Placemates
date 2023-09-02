@@ -3,12 +3,8 @@ import Navbar from './Navbar';
 import { useState } from 'react';
 import axios from 'axios';
 
-//import { useNavigate } from 'react-router-dom';
-
 
 export default function Signup() {
-
-  //  const history = useNavigate();
 
     const [data,setData]= useState({
         id:"",
@@ -23,44 +19,32 @@ export default function Signup() {
 
     const handleChange=(e)=>{
         setData(prev=>({ ...prev, [e.target.name] : e.target.value}));
-        // console.log(data);
-    }
-console.log(data);
-    const handlClick=async e=>{
-        e.preventDefault()
-        try{
-            // const newdata = {
-            //     FirstName:data.FirstName,
-            //     LastName:data.LastName,
-            //     Designation:data.Designation,
-            //     id:data.id,
-            //     college_name:data.college_name,
-            //     branch:data.branch,
-            //     email:data.email,
-            //     password:data.password,
-            // }
-    
-            // console.log(newdata);
-    
-             await axios.post("http://localhost:8700/placemates",data);
-             alert("data storedd");
-            // .then((result)=>{
-            //     if(result.data.Status === 'Invalid'){
-            //         alert('Invalid User')
-            //     }
-            //     else{
-            //         history('/signup');
-            //     }
-            // }); 
-        }catch(err){
-            console.log(err);
-        }
-        
+        console.log(data,"aaaaa");
     }
 
-    // const handlClick=()=>{
-    //     axios.post("https://localhost:8700/placemates",setData);
-    // }
+
+    const handlClick=async(e)=>{
+        e.preventDefault()
+        try{
+            const newdata = {
+                firstName:data.FirstName,
+                lastName:data.LastName,
+                designation:data.Designation,
+                id:data.id,
+                college_name:data.CollegeName,
+                branch:data.Branch,
+                email:data.Email,
+                password:data.Password,
+            }
+            const resp= await axios.post("http://localhost:8700/signup",newdata);
+            alert("Signed Up Successfully")
+            
+        } catch(e){
+            console.log(e,"Error")
+        }
+    }
+
+   
     return (
         <>
             
@@ -101,7 +85,7 @@ console.log(data);
                         </div>
                         <div className="form-group col-md-6">
                             <label htmlFor="inputID">Employee Id</label>
-                            <input type="number" name="ID"className="form-control" id="inputID" placeholder="ID" 
+                            <input type="number" name="id"className="form-control" id="inputID" placeholder="ID" 
                             onChange={handleChange}  />
                         </div>
                         <div className="form-group col-md-6">

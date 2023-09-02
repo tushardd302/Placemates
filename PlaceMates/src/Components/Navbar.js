@@ -6,7 +6,7 @@ import logonobg from './images/logonobg.png'
 
 
 export default function Navbar() {
-
+    const role = localStorage.getItem("designation");
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light">
@@ -25,19 +25,26 @@ export default function Navbar() {
                         <li className="nav-item ">
                             <Link className="nav-link " to="/about" id='items2'>About Us</Link>
                         </li>
+                        { role==="Institutional User"&&
                         <li className="nav-item ">
                             <Link className="nav-link " to="/new" id='items2'>New Entry</Link>
                         </li>
+                        }
+                        { role &&
+                        <>
                         <li className="nav-item ">
                             <Link className="nav-link " to="/recruiters" id='items2'>Recruiters</Link>
                         </li>
                         <li className="nav-item ">
                             <Link className="nav-link " to="/placements" id='items2'>Placements</Link>
                         </li>
+                        </>
+}
                         {/* <li className="nav-item ">
                             <Link className="nav-link " to="#" id='items2'>Contact</Link>
                         </li> */}
                     </ul>
+                    { role===null ? 
                     <form className="form-inline my-2 my-lg-0 myclass">
                         <button className="btn my-2 my-sm-0 mx-1" type="submit">
                             <Link to="/login" className='registration'>Login</Link>
@@ -45,7 +52,15 @@ export default function Navbar() {
                         <button className="btn my-2 my-sm-0 mx-1" type="submit">
                             <Link to="/signup" className='registration'>Sign Up</Link>
                         </button>
+                    </form> :
+<form className="form-inline my-2 my-lg-0 myclass">
+                    
+                        <button className="btn my-2 my-sm-0 mx-1" type="submit" onClick={()=>{localStorage.removeItem("designation"); alert("Logged Out Successfully")}}>
+                            <Link  className='registration'>Logout</Link>
+                        </button>
                     </form>
+}
+
                 </div>
             </nav>
         </>

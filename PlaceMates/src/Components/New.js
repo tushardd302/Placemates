@@ -19,9 +19,6 @@ export default function New() {
                         <button className="btn my-2 my-sm-0 mx-1 entrybtn" >
                             <Link to="/StudentEntry" id='entries'>Add Student</Link>
                         </button>
-                        {/* <Link to="/StudentEntry" value="Add Student" id='entries'>
-                        <button className="btn my-2 my-sm-0 mx-1 entrybtn"/>
-                    </Link> */}
                     </div>
                     <div className="newCompany col newCol ">
                         <img src={company} style={{ width: '200px', height: '200px' }} alt="no img" id='Img' />

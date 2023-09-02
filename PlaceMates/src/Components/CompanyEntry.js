@@ -19,20 +19,16 @@ export default function CompanyEntry() {
 
     const handleChange=(e)=>{
         setData(prev=>({ ...prev, [e.target.name] : e.target.value}));
-        // console.log(data);
     }
 // console.log(data);
     const handlClick=async e=>{
         e.preventDefault()
         try{
-    
-             await axios.post("http://localhost:8700/co",data);
-             alert("Data Stored Successfully");
-           
+            await axios.post("http://localhost:8700/co",data);
+            alert("Company Data Added Successfully")
         }catch(err){
             console.log(err);
-        }
-        
+        }    
     }
 
     return (
